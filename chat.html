@@ -2,22 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!--RWD viewport-->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>U chat</title>
+  <title>UChat</title>
   <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
   <!--js and css-->
   <script src="./public/js/jquery.js"></script>
   <link rel="stylesheet" href="./public/css/style.css">
   <script src="./public/js/script.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!--firebase-->
   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-
 </head>
 <body>
-    <h1 id="userName"></h1>
-    <ul id ="messages"></ul>
-    <input type="text" id= "messageInput" placeholder="start chatting..." />
-    <a href="./update.html">back to update</a>
+  <div class="login-background">
+    <div class="container-fluid">
+      <div class="loginCard">
+        <div class="row">
+          <nav>
+            <div class="navbar-header">
+              <a class="navbar-brand" href="./index.html">UChat</a>
+            </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="./update.html">edit profile</a></li>
+                <li><button id="logoutBtn" type="button" name="button">log out</button></li>
+              </ul>
+          </nav>
+        </div>
+
+          <div class="row chat">
+            <div class="col-xs-3 profile">
+                <ul>
+                  <li><img class="avaPhoto" id="avatar"  src="" alt=""/></li>
+                  <li><h1 id = "userName"></h1></li>
+                  <li>email:<p id ="email"></p></li>
+                  <li>age:<p id ="age"></p></li>
+                  <li>occupation:<p id ="occupation"></p></li>
+                  <li>description:<p id ="description"></p></li>
+                </ul>
+            </div>
+            <div class="col-xs-9 chatroom">
+              <ul class="messages" id ="messages"></ul>
+              <input type="text" id= "messageInput" placeholder="press enter to send message..." />
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

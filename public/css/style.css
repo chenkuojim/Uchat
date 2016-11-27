@@ -1,0 +1,186 @@
+/*fonts*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+*{
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+.inline li{
+  display: inline-block;
+}
+li{
+  list-style: none;
+}
+ul{
+  padding-left: 0px;
+}
+.centered{
+  text-align: center;
+}
+.btn{
+  border:none;
+  background-color: #E77272;
+  width: 120px;
+  padding-top:5px;
+  padding-bottom: 5px;
+  color: white;
+}
+.btn:hover{
+  background-color: #FF5656;
+}
+/* nav*/
+nav{
+  padding-left: 5%;
+  color: black;
+}
+nav button{
+  border: none;
+  line-height: 50px;
+  font-weight: bold;
+  margin-left: 0px;
+  color: #CA4B7C;
+}
+#logoutBtn:hover{
+  background-color: #e7e7e7;
+}
+nav a{
+    color: #CA4B7C;
+    font-weight: bold;
+}
+
+/*login*/
+.login-background{
+  height: 100vh;
+  width: 100%;
+  background-image:url("../img/login_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.loginCard{
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 80vh;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%
+  padding-bottom: 50px;
+}
+.loginCard input{
+  width: 250px;
+  border: none;
+  border-bottom: 2px solid #5E88FC;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #2F3032;
+}
+.slogan{
+  padding-top: 5%;
+}
+.slogan h1{
+  color: #CA4B7C;
+}
+.slogan p{
+  color: #7A2E7A;
+}
+#loginBtn{
+  margin-right: 5px;
+}
+.login{
+  margin-top: 13%;
+}
+.login li{
+  margin-bottom: 15px;
+}
+#loginLbl{
+  text-align: left;
+  width: 250px;
+  color: red;
+}
+/*update*/
+.edit-background{
+  background-image:url("../img/login_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.editCard{
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-bottom: 150px;
+}
+.editCard input{
+  width: 250px;
+  border: none;
+  border-bottom: 2px solid #5E88FC;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #2F3032;
+}
+textarea{
+  background-color: rgba(0, 0, 0, 0.0);
+  border: none;
+}
+
+.update{
+  margin-top: 21px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 51px;
+}
+.update h1{
+  color: #CA4B7C;
+}
+.update li{
+  margin-bottom: 15px;
+}
+#editAvatar{
+  border: none;
+  padding-left: 0px;
+}
+#logoutBtn{
+  margin-right: 50px;
+  background: rgba(0, 0, 0, 0.0);
+}
+/*profile*/
+
+.profile{
+  background-color: #2F3032;
+  height:auto;
+  color: white;
+  box-shadow: 3px 1px 5px black;
+}
+.profile li{
+  margin-bottom: 15px;
+}
+.avaPhoto{
+  margin-top:15px;
+  border-radius: 100%;
+  height:100px;
+  width:100px;
+}
+/*chat*/
+.chatroom{
+  padding-right: 15px;
+
+}
+#messages{
+  margin-top: 10px;
+  height: 635px;
+  overflow: auto;
+  margin-bottom: 40px;
+}
+#messageInput{
+  width:95%;
+}
+.messages li {
+  margin-bottom: 10px;
+  margin-left:  5%;
+  margin-right: 5%;
+}
+strong{
+  font-size: 20px;
+}

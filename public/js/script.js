@@ -12,8 +12,6 @@ $(document).ready(function(){
   /*var declaration*/
   var photoURL;
   /*--binding dom elements--*/
-  const $signupEmail       = $('#signupEmail');
-  const $signupPassword    = $('#signupPassword');
   const $signupBtn         = $('#signupBtn');
   const $loginEmail        = $('#loginEmail');
   const $loginPassword     = $('#loginPassword');
@@ -28,6 +26,18 @@ $(document).ready(function(){
   const $avatar            = $('#avatar');
   const $messageField      = $('#messageInput');
   const $messages          = $('#messages');
+  const $loginLbl          = $('#loginLbl');
+  const $loginState        = $('#loginState');
+  const $progressbar       = $('.progress-bar');
+  const $editOccupation    = $('#editOccupation');
+  const $editAge           = $('#editAge');
+  const $editDescription   = $('#editDesciption');
+  const $age               = $('#age');
+  const $occupation        = $('#occupation');
+  const $description       = $('#description');
+  const $preview           = $('#preview');
+  const $send              = $('#send');
+  const $uploadMsg         = $('#uploadMsg');
 
   /*--firebase ref--*/
   var storageRef = firebase.storage().ref();
@@ -50,10 +60,11 @@ $(document).ready(function(){
     uploadTask.on('state_changed',function(snapshot){
       var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
       progress = progress.toFixed();
-      $file.html(progress+'% Uploaded!!!');
+      $progressbar.width(progress+"%");
     });
     uploadTask.then(function(snapshot){
       photoURL = snapshot.metadata.downloadURLs[0];
+      $preview.attr("src",photoURL);
     }).catch(function(error){
         console.log(error);
     });
@@ -66,18 +77,20 @@ $(document).ready(function(){
   /*--signup--*/
   $signupBtn.click(function(e){
     /*--get values--*/
-    const email    = $signupEmail.val();
-    const password = $signupPassword.val();
+    const email    = $loginEmail.val();
+    const password = $loginPassword.val();
     const auth     = firebase.auth();
     /*signing up*/
     const promise = auth.createUserWithEmailAndPassword(email,password);
     promise.catch(function(e){
       console.log(e.message);
+      $loginLbl.html(e.message);
     });
     promise.then(function(user){
       console.log(user.uid);
       const dbUid = dbRef.child(user.uid);
       dbUid.push({email:user.email});
+      $loginLbl.html('sign up successfully');
       window.location = './update.html'
     });
   });
@@ -91,8 +104,10 @@ $(document).ready(function(){
     const promise = auth.signInWithEmailAndPassword(email,password);
     promise.catch(function(e){
       console.log(e.message);
+      $loginLbl.html(e.message);
     });
     promise.then(function(e){
+      $loginLbl.html('login successfully');
       window.location = './update.html';
     });
   });
@@ -110,9 +125,10 @@ $(document).ready(function(){
   firebase.auth().onAuthStateChanged(function(user){
     if(user){
       $userName.html(user.displayName);
+      $email.html(user.email);
       $avatar.attr("src",user.photoURL);
     }else {
-      $userName.html("please login!!")
+      $loginState.html("Please login in oder to enable there functions.")
       $logoutBtn.attr("disabled","disabled");
       $editName.attr("disabled","disabled");
       $editAvatar.attr("disabled","disabled");
@@ -123,54 +139,100 @@ $(document).ready(function(){
   $editBtn.click(function(){
     var user = firebase.auth().currentUser;
     /*get values*/
-    const userName = $editName.val();
+    const userName    = $editName.val();
+    const occupation  = $editOccupation.val();
+    const age         = $editAge.val();
+    const description = $editDescription.val();
 
     const promise = user.updateProfile({
         displayName:userName,
         photoURL:photoURL
     });
+
+    const dbUid = dbRef.child(user.uid);
+    dbUid.update({
+      occupation:occupation,
+      age:age,
+      description:description
+    });
+
     promise.then(function(){
-        console.log('update successful');
-        user = firebase.auth().currentUser;
+        $uploadMsg.html('update successful');
         if(user){
           $userName.html(user.displayName);
           $avatar.attr("src",user.photoURL);
+          $email.html(user.email);
+          $editName.val('');
+          $editOccupation.val('');
+          $editAge.val('');
+          $editDescription.val('');
         }
     });
   });
 
+
   /*input message*/
   $messageField.keypress(function(e){
     var user = firebase.auth().currentUser;
+      if(e.keyCode ==13){
+        var message  = $messageField.val();
+        var userName = user.displayName||"Anoymous";
+        var avatar   = user.photoURL||'';
+        var uid      = user.uid;
 
-    if(e.keyCode ==13 ){
-      var message  = $messageField.val();
-      var userName = user.displayName||"Anoymous";
-      var avatar   = user.photoURL||'';
+        chatRoomRef.push({userName:userName,message:message,avatar:avatar,uid:uid});
+        $messageField.val('');
+        }
+    });
 
-      chatRoomRef.push({userName:userName,message:message,avatar:avatar});
-      $messageField.val('');
-    }
-  });
   /*show message*/
   chatRoomRef.limitToLast(10).on('child_added',function(snapshot){
       /*get messages*/
+      var user     = firebase.auth().currentUser;
       var data     = snapshot.val();
       var userName = data.userName ||"Anoymous";
       var messages = data.message;
       var avatar   = data.avatar;
-      console.log(avatar);
+      var uid      = data.uid;
       /*elements with msgs*/
       var $messageLi   = $("<li>");
       var $nameElement = $("<strong></strong>");
-      var $chatAvatar      = $('<img heigt ="50px" width = "50px" />');
-      $chatAvatar.attr("src",avatar);
-      $nameElement.text(userName);
-      $messageLi.text(messages).prepend($nameElement).prepend($chatAvatar);
+      var $chatAvatar  = $('<img height ="50px" width = "50px"/>');
+      $chatAvatar.css("border-radius","100%");
+      if(uid===user.uid){
+        $chatAvatar.attr("src",avatar);
+        $nameElement.text(" :"+userName);
+        $messageLi.text(messages).append($nameElement).append($chatAvatar);
+        $messageLi.attr("key",uid);
+        $messageLi.css("text-align","right");
+        $chatAvatar.css("margin-left","15px");
+        /*append msgs*/
+        $messages.append($messageLi);
+      }else{
+        $chatAvatar.attr("src",avatar);
+        $nameElement.text(userName+": ");
+        $messageLi.text(messages).prepend($nameElement).prepend($chatAvatar);
+        $messageLi.attr("key",uid);
+        $messageLi.css("text-align","left");
+        $chatAvatar.css("margin-right","15px");
+        /*append msgs*/
+        $messages.append($messageLi);
 
-      /*append msgs*/
-      $messages.append($messageLi);
+      }
+      $messages[0].scrollTop = $messages[0].scrollHeight;
+    });
 
-      //$messages[0].scrollTop = messages[0].scrollHeight;
-  })
+  var user = firebase.auth().currentUser;
+  const dbUid = dbRef;
+  dbUid.on('child_added',function(snapshot){
+    var data = snapshot.val();
+    console.log(data);
+    var occupation = data.occupation ||'N/A';
+    var age = data.age ||'N/A';
+    var description = data.description ||'N/A';
+
+    $age.html(age);
+    $occupation.html(occupation);
+    $description.html(description);
+  });
 });

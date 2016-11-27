@@ -4,21 +4,55 @@
   <meta charset="UTF-8">
   <!--RWD viewport-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>U chat</title>
+  <title>UChat</title>
   <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
   <!--js and css-->
   <script src="./public/js/jquery.js"></script>
   <link rel="stylesheet" href="./public/css/style.css">
   <script src="./public/js/script.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!--firebase-->
   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 
 </head>
 <body>
-  <input type="text" id ="loginEmail" placeholder="email" />
-  <input type="password" id ="loginPassword" placeholder="password" />
-  <button type="button" id="loginBtn" name="button">login</button>
-  <a href="./signup.html">signup</a>
-  <a href="./update.html">back to update</a>
+  <div class="login-background">
+    <!--login form-->
+    <div class="container-fluid">
+      <div class="loginCard centered">
+        <div class="row">
+          <nav>
+            <div class="navbar-header">
+              <a class="navbar-brand" href="./index.html">UChat</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="./chat.html">go chat</a></li>
+              <li><button id="logoutBtn" type="button" name="button">log out</button></li>
+            </ul>
+          </nav>
+          </div>
+          <div class="row">
+            <div class="slogan">
+              <h1>Sign In</h1>
+              <p>Sign in and start your wonderful chat with UChat.</p>
+            </div>
+          </div>
+          <div class="row">
+            <ul class="login">
+              <li><input type="text" id ="loginEmail" placeholder="email" /></li>
+              <li><input type="password" id ="loginPassword" placeholder="password" /></li>
+              <label id ="loginLbl"></label>
+              <div class = "inline">
+                <li><button class = "btn" type="button" id="loginBtn" name="button">login</button></li>
+                <li><button class = "btn" type="button" id = "signupBtn" name="button">signup</button></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

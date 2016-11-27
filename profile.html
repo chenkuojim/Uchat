@@ -22,45 +22,33 @@
   <div class="edit-background">
     <!--card-->
     <div class="container-fluid">
-      <div class="editCard">
+      <div class="profileCard">
         <div class="row">
           <nav>
             <div class="navbar-header">
               <a class="navbar-brand" href="./index.html">UChat</a>
             </div>
               <ul class="nav navbar-nav navbar-right">
+                <li><a href="./update.html">edit profile</a></li>
                 <li><a href="./chat.html">go chat</a></li>
                 <li><button id="logoutBtn" type="button" name="button">log out</button></li>
               </ul>
           </nav>
         </div>
-
-        <div class="row update">
-          <ul class="col-md-5 col-md-offset-1">
-            <li><h1>Profile Edit</h1></li>
-            <li><label id ='loginState'></label></li>
-            <li><input type="text" id = "editName"  placeholder="new username" /></li>
-            <li><input type="text" id ="editOccupation" placeholder="occupation" /></li>
-            <li><input type="number" id ="editAge" placeholder="age" /></li>
-            <li><textarea type="text" id = "editDesciption" placeholder="type some description here..." rows ="4" cols = "35"></textarea></li>
-            <li><input type="file" id ="editAvatar"/></li>
-            <li>
-              <div id = "file" class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </li>
-            <li><label id ="uploadMsg"></label></li>
-            <li><button class="btn" type="button" id = "editBtn" name="button">Submit</button></li>
-          </ul>
-
-          <div class = 'col-md-5'>
-            <img id="preview" height="auto" width="100%" src="" alt=""/>
+        <div class="row profile">
+          <div class = 'col-md-5 col-md-offset-1'>
+            <img id="avatar" height="auto" width="100%" src="" alt=""/>
           </div>
+          <ul class="col-md-5">
+            <li><h1 id = "userName"></h1></li>
+            <li>email:<p id ="email"></p></li>
+            <li>age:<p id ="age"></p></li>
+            <li>occupation:<p id ="occupation"></p></li>
+            <li>description:<p id ="description"></p></li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>
