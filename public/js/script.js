@@ -137,6 +137,7 @@ $(document).ready(function(){
       $editDescription.attr("disabled","disabled");
       $editBtn.attr("disabled","disabled");
       $messageInput.attr("disabled","disabled");
+
     }
   });
   /*edit user*/
