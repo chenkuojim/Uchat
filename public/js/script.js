@@ -132,7 +132,11 @@ $(document).ready(function(){
       $logoutBtn.attr("disabled","disabled");
       $editName.attr("disabled","disabled");
       $editAvatar.attr("disabled","disabled");
+      $editOccupation.attr("disabled","disabled");
+      $editAge.attr("disabled","disabled");
+      $editDescription.attr("disabled","disabled");
       $editBtn.attr("disabled","disabled");
+      $messageInput.attr("disabled","disabled");
     }
   });
   /*edit user*/
