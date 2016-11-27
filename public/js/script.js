@@ -136,7 +136,7 @@ $(document).ready(function(){
       $editAge.attr("disabled","disabled");
       $editDescription.attr("disabled","disabled");
       $editBtn.attr("disabled","disabled");
-      $messageInput.attr("disabled","disabled");
+      $messageField.attr("disabled","disabled");
 
     }
   });
