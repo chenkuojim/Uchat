@@ -169,7 +169,7 @@ textarea{
 }
 #messages{
   margin-top: 10px;
-  height: 58vh;
+  height: 50vh;
   overflow: auto;
   margin-bottom: 40px;
 }
