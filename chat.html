@@ -16,7 +16,6 @@
   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 </head>
 <body>
-  <div class="login-background">
     <div class="container-fluid">
       <div class="loginCard">
         <div class="row">
@@ -45,10 +44,16 @@
             <div class="col-xs-9 chatroom">
               <ul class="messages" id ="messages"></ul>
               <input type="text" id= "messageInput" placeholder="press enter to send message..." />
+              <button id = "addSticker" class="emojiBtn" type="button" name="button">emoji</button>
+              <ul id="sticker" class="hidden">
+                <li><img id="happy" src="" alt=""></li>
+                <li><img id="angry" src="" alt=""></li>
+                <li><img id="sad" src="" alt=""></li>
+                <li><img id="surprise" src="" alt=""></li>
+              </ul>
             </div>
           </div>
       </div>
     </div>
-  </div>
 </body>
 </html>

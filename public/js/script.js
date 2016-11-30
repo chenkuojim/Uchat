@@ -38,6 +38,12 @@ $(document).ready(function(){
   const $preview           = $('#preview');
   const $send              = $('#send');
   const $uploadMsg         = $('#uploadMsg');
+  const $sticker           = $('#sticker');
+  const $addSticker        = $('#addSticker');
+  const $angry             = $('#angry');
+  const $sad               = $('#sad');
+  const $happy             = $('#happy');
+  const $surprise          = $('#surprise');
 
   /*--firebase ref--*/
   var storageRef = firebase.storage().ref();
@@ -189,7 +195,71 @@ $(document).ready(function(){
         $messageField.val('');
         }
     });
+  $addSticker.click(function(){
+    $sticker.toggleClass("hidden");
+    storageRef.child('emojis/surprise.png')
+    .getDownloadURL().
+    then(function(url){
+      $surprise.attr("src",url);
+    });
+    storageRef.child('emojis/happy.png')
+    .getDownloadURL().
+    then(function(url){
+      $happy.attr("src",url);
+    });
+    storageRef.child('emojis/angry.png')
+    .getDownloadURL().
+    then(function(url){
+      $angry.attr("src",url);
+    });
+    storageRef.child('emojis/sad.png')
+    .getDownloadURL().
+    then(function(url){
+      $sad.attr("src",url);
+    });
+  });
 
+  $surprise.click(function(){
+      var user = firebase.auth().currentUser;
+      var userName = user.displayName||"Anoymous";
+      var avatar   = user.photoURL||'';
+      var uid      = user.uid;
+      var emoji    = $surprise.attr("src");
+
+      chatRoomRef.push({userName:userName,emoji:emoji,avatar:avatar,uid:uid});
+      console.log(emoji);
+  })
+
+  $happy.click(function(){
+    var user = firebase.auth().currentUser;
+    var userName = user.displayName||"Anoymous";
+    var avatar   = user.photoURL||'';
+    var uid      = user.uid;
+    var emoji    = $happy.attr("src");
+
+    chatRoomRef.push({userName:userName,emoji:emoji,avatar:avatar,uid:uid});
+    console.log(emoji);
+  })
+  $sad.click(function(){
+    var user = firebase.auth().currentUser;
+    var userName = user.displayName||"Anoymous";
+    var avatar   = user.photoURL||'';
+    var uid      = user.uid;
+    var emoji    = $sad.attr("src");
+
+    chatRoomRef.push({userName:userName,emoji:emoji,avatar:avatar,uid:uid});
+    console.log(emoji);
+  })
+  $angry.click(function(){
+    var user = firebase.auth().currentUser;
+    var userName = user.displayName||"Anoymous";
+    var avatar   = user.photoURL||'';
+    var uid      = user.uid;
+    var emoji    = $angry.attr("src");
+
+    chatRoomRef.push({userName:userName,emoji:emoji,avatar:avatar,uid:uid});
+    console.log(emoji);
+})
   /*show message*/
   chatRoomRef.limitToLast(10).on('child_added',function(snapshot){
       /*get messages*/
@@ -199,15 +269,22 @@ $(document).ready(function(){
       var messages = data.message;
       var avatar   = data.avatar;
       var uid      = data.uid;
+      var emoji    = data.emoji;
       /*elements with msgs*/
       var $messageLi   = $("<li>");
       var $nameElement = $("<strong></strong>");
       var $chatAvatar  = $('<img height ="50px" width = "50px"/>');
+      var $emojis      = $('<img />');
       $chatAvatar.css("border-radius","100%");
       if(uid===user.uid){
         $chatAvatar.attr("src",avatar);
         $nameElement.text(" :"+userName);
-        $messageLi.text(messages).append($nameElement).append($chatAvatar);
+        if(emoji){
+          $emojis.attr("src",emoji);
+          $messageLi.append($emojis).append(':').append($chatAvatar);
+        }else{
+          $messageLi.text(messages).append($nameElement).append($chatAvatar);
+        }
         $messageLi.attr("key",uid);
         $messageLi.css("text-align","right");
         $chatAvatar.css("margin-left","15px");
@@ -216,7 +293,12 @@ $(document).ready(function(){
       }else{
         $chatAvatar.attr("src",avatar);
         $nameElement.text(userName+": ");
-        $messageLi.text(messages).prepend($nameElement).prepend($chatAvatar);
+        if(emoji){
+          $emojis.attr("src",emoji);
+          $messageLi.append($emojis).prepend(':').prepend($chatAvatar);
+        }else{
+          $messageLi.text(messages).prepend($nameElement).prepend($chatAvatar);
+        }
         $messageLi.attr("key",uid);
         $messageLi.css("text-align","left");
         $chatAvatar.css("margin-right","15px");
