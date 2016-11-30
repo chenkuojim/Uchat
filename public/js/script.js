@@ -168,7 +168,7 @@ $(document).ready(function(){
         photoURL:photoURL
     });
 
-    const dbUid = dbRef.child(user.uid).child(info);
+    const dbUid = dbRef.child(user.uid).child('info');
     dbUid.update({
       occupation:occupation,
       age:age,
