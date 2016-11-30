@@ -128,7 +128,7 @@ $(document).ready(function(){
       $email.html(user.email);
       $avatar.attr("src",user.photoURL);
       var user = firebase.auth().currentUser;
-      const dbUid = dbRef;
+      const dbUid = dbRef.child(user.uid);
       dbUid.on('child_added',function(snapshot){
       var data = snapshot.val();
       console.log(data);
