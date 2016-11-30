@@ -127,12 +127,11 @@ $(document).ready(function(){
       $userName.html(user.displayName);
       $email.html(user.email);
       $avatar.attr("src",user.photoURL);
+      console.log(user.photoURL)
       var user = firebase.auth().currentUser;
       const dbUid = dbRef.child(user.uid);
       dbUid.on('child_added',function(snapshot){
       var data = snapshot.val();
-      console.log('data now is');
-      console.log(data);
       var occupation = data.occupation ||'N/A';
       var age = data.age ||'N/A';
       var description = data.description ||'N/A';
