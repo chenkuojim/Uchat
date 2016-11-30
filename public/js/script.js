@@ -131,6 +131,7 @@ $(document).ready(function(){
       const dbUid = dbRef.child(user.uid);
       dbUid.on('child_added',function(snapshot){
       var data = snapshot.val();
+      console.log('data is');
       console.log(data);
       var occupation = data.occupation ||'N/A';
       var age = data.age ||'N/A';
