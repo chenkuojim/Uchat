@@ -293,7 +293,7 @@ $(document).ready(function(){
         $nameElement.text(" :"+userName);
         if(emoji){
           $emojis.attr("src",emoji);
-          $messageLi.append($emojis).append(':').append($chatAvatar);
+          $messageLi.append($emojis).append(':').append($nameElement).append($chatAvatar);
         }else{
           $messageLi.text(messages).append($nameElement).append($chatAvatar);
         }
@@ -307,7 +307,7 @@ $(document).ready(function(){
         $nameElement.text(userName+": ");
         if(emoji){
           $emojis.attr("src",emoji);
-          $messageLi.append($emojis).prepend(':').prepend($chatAvatar);
+          $messageLi.append($emojis).prepend(':').prepend($nameElement).prepend($chatAvatar);
         }else{
           $messageLi.text(messages).prepend($nameElement).prepend($chatAvatar);
         }
