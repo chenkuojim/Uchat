@@ -132,7 +132,19 @@ $(document).ready(function(){
     if(user){
       $userName.html(user.displayName);
       $email.html(user.email);
+      console.log(user.photoURL);
       $avatar.attr("src",user.photoURL);
+      const dbUid = dbRef.child(user.uid);
+      dbUid.on('child_added',function(snapshot){
+      var data = snapshot.val();
+      var occupation = data.occupation ||'N/A';
+      var age = data.age ||'N/A';
+      var description = data.description ||'N/A';
+
+      $age.html(age);
+      $occupation.html(occupation);
+      $description.html(description);
+  });
     }else {
       $loginState.html("Please login in oder to enable there functions.")
       $logoutBtn.attr("disabled","disabled");
@@ -160,7 +172,7 @@ $(document).ready(function(){
         photoURL:photoURL
     });
 
-    const dbUid = dbRef.child(user.uid);
+    const dbUid = dbRef.child(user.uid).child('info');
     dbUid.update({
       occupation:occupation,
       age:age,
@@ -308,18 +320,4 @@ $(document).ready(function(){
       }
       $messages[0].scrollTop = $messages[0].scrollHeight;
     });
-
-  var user = firebase.auth().currentUser;
-  const dbUid = dbRef;
-  dbUid.on('child_added',function(snapshot){
-    var data = snapshot.val();
-    console.log(data);
-    var occupation = data.occupation ||'N/A';
-    var age = data.age ||'N/A';
-    var description = data.description ||'N/A';
-
-    $age.html(age);
-    $occupation.html(occupation);
-    $description.html(description);
-  });
 });
