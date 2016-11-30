@@ -126,9 +126,8 @@ $(document).ready(function(){
     if(user){
       $userName.html(user.displayName);
       $email.html(user.email);
+      console.log(user.photoURL);
       $avatar.attr("src",user.photoURL);
-      console.log(user.photoURL)
-      var user = firebase.auth().currentUser;
       const dbUid = dbRef.child(user.uid);
       dbUid.on('child_added',function(snapshot){
       var data = snapshot.val();
