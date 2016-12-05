@@ -16,38 +16,36 @@ ul{
 .centered{
   text-align: center;
 }
-.btn{
-  border:none;
-  background-color: #E77272;
-  width: 120px;
-  padding-top:5px;
-  padding-bottom: 5px;
-  color: white;
+.fleft{
+  float: left;
 }
-.btn:hover{
-  background-color: #FF5656;
+.fright{
+  float: right;
 }
-/* nav*/
-nav{
-  padding-left: 5%;
-  color: black;
-}
-nav button{
-  border: none;
-  line-height: 50px;
-  font-weight: bold;
-  margin-left: 0px;
+h1{
   color: #CA4B7C;
 }
-#logoutBtn:hover{
-  background-color: #e7e7e7;
+p{
+  color: #7A2E7A;
 }
-nav a{
-    color: #CA4B7C;
-    font-weight: bold;
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+a{
+  color: white !important;
+  text-decoration: none;
+}
+a:hover{
+  color: white !important;
+  text-decoration: none !important;
 }
 
-/*login*/
+#logoutBtn{
+  background-color: rgba(0, 0, 0, 0.0);
+  border: none;
+}
 body{
   height: 100vh;
   width: 100%;
@@ -55,144 +53,39 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
 }
-.loginCard{
-  background-color: rgba(255, 255, 255, 0.8);
-  height: 80vh;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
-  margin-bottom: 5%
-  padding-bottom: 50px;
+.mdl-grid{
+  padding: 5% 5% !important;
 }
-.loginCard input{
-  width: 250px;
-  border: none;
-  border-bottom: 2px solid #5E88FC;
-  padding-left: 10px;
-  padding-bottom: 5px;
-  background-color: rgba(0, 0, 0, 0.0);
-  color: #2F3032;
+.card{
+ padding:5% 5%;
+ background-color:rgba(255, 255, 255, 0.8);
 }
 .slogan{
-  padding-top: 5%;
+  margin-bottom: 10%;
 }
-.slogan h1{
-  color: #CA4B7C;
+.hidden{
+  display: none;
 }
-.slogan p{
-  color: #7A2E7A;
-}
-#loginBtn{
-  margin-right: 5px;
-}
-.login{
-  margin-top: 13%;
-}
-.login li{
-  margin-bottom: 15px;
-}
-#loginLbl{
-  text-align: left;
-  width: 250px;
-  color: red;
-}
-/*update*/
-.edit-background{
-  background-image:url("../img/login_background.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.editCard{
-  background-color: rgba(255, 255, 255, 0.8);
-  height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding-bottom: 150px;
-}
-.editCard input{
-  width: 250px;
-  border: none;
-  border-bottom: 2px solid #5E88FC;
+#sticker li{
+  display: inline-block;
   padding-left: 10px;
-  padding-bottom: 5px;
-  background-color: rgba(0, 0, 0, 0.0);
-  color: #2F3032;
-}
-textarea{
-  background-color: rgba(0, 0, 0, 0.0);
-  border: none;
-}
-
-.update{
-  margin-top: 21px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 51px;
-}
-.update h1{
-  color: #CA4B7C;
-}
-.update li{
-  margin-bottom: 15px;
-}
-#editAvatar{
-  border: none;
-  padding-left: 0px;
-}
-#logoutBtn{
-  margin-right: 50px;
-  background: rgba(0, 0, 0, 0.0);
-}
-/*profile*/
-
-.profile{
-  background-color: #2F3032;
-  height:auto;
-  color: white;
-  box-shadow: 3px 1px 5px black;
-}
-.profile li{
-  margin-bottom: 15px;
-}
-.avaPhoto{
-  margin-top:15px;
-  border-radius: 100%;
-  height:100px;
-  width:100px;
-}
-/*chat*/
-.chatroom{
-  padding-right: 15px;
-
 }
 #messages{
   margin-top: 10px;
   height: 50vh;
   overflow: auto;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
-#messageInput{
-  width:90%;
+
+.mdl-textfield__label{
+  margin-bottom: 0 !important;
 }
-.messages li {
-  margin-bottom: 10px;
-  margin-left:  5%;
-  margin-right: 5%;
+.btn_group button{
+  margin-top: 20px;
 }
-strong{
-  font-size: 20px;
+.mdl-layout__drawer{
+  padding-left: 15px;
 }
-#sticker li{
-  display: inline-block;
-  padding-top:  5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.emojiBtn{
-  background-color: #E77272;
-  color: white;
-  padding:5px 5px 5px 5px;
-  border: none;
+.mdl-layout-title{
+  padding-left: 0px !important;
 }

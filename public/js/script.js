@@ -28,7 +28,7 @@ $(document).ready(function(){
   const $messages          = $('#messages');
   const $loginLbl          = $('#loginLbl');
   const $loginState        = $('#loginState');
-  const $progressbar       = $('.progress-bar');
+  const $progressbar       = $('#p1');
   const $editOccupation    = $('#editOccupation');
   const $editAge           = $('#editAge');
   const $editDescription   = $('#editDesciption');
@@ -66,7 +66,9 @@ $(document).ready(function(){
     uploadTask.on('state_changed',function(snapshot){
       var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
       progress = progress.toFixed();
-      $progressbar.width(progress+"%");
+      $progressbar.addEventListener('mdl-componentupgraded', function() {
+        this.MaterialProgress.setProgress(87);
+      });
     });
     uploadTask.then(function(snapshot){
       photoURL = snapshot.metadata.downloadURLs[0];
@@ -293,7 +295,7 @@ $(document).ready(function(){
         $nameElement.text(" :"+userName);
         if(emoji){
           $emojis.attr("src",emoji);
-          $messageLi.append($emojis).append(':').append($nameElement).append($chatAvatar);
+          $messageLi.append($emojis).append($nameElement).append($chatAvatar);
         }else{
           $messageLi.text(messages).append($nameElement).append($chatAvatar);
         }
@@ -307,7 +309,7 @@ $(document).ready(function(){
         $nameElement.text(userName+": ");
         if(emoji){
           $emojis.attr("src",emoji);
-          $messageLi.append($emojis).prepend(':').prepend($nameElement).prepend($chatAvatar);
+          $messageLi.append($emojis).prepend($nameElement).prepend($chatAvatar);
         }else{
           $messageLi.text(messages).prepend($nameElement).prepend($chatAvatar);
         }

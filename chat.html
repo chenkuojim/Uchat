@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UChat</title>
   <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
   <!--js and css-->
   <script src="./public/js/jquery.js"></script>
   <link rel="stylesheet" href="./public/css/style.css">
@@ -16,44 +20,51 @@
   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-      <div class="loginCard">
-        <div class="row">
-          <nav>
-            <div class="navbar-header">
-              <a class="navbar-brand" href="./index.html">UChat</a>
-            </div>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="./update.html">edit profile</a></li>
-                <li><button id="logoutBtn" type="button" name="button">log out</button></li>
-              </ul>
-          </nav>
+  <div class="demo-layout-transparent mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"><a href="./index.html">UChat</a></span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="./chat.html"><a href="./index.html">UChat</a></a>
+        <button id="logoutBtn" class = "mdl-navigation__link" type="button" name="button">log out</button>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">profile</span>
+    <nav class="mdl-navigation">
+      <img id="avatar" height="auto" width="100%" src="" alt=""/>
+      <h1  id = "userName" class="mdl-navigation__link"></h1>
+      email:<p id ="email" class="mdl-navigation__link"></p>
+      age:<p id ="age" class="mdl-navigation__link"></p>
+      occupation:<p id ="occupation" class="mdl-navigation__link"></p>
+      description:<p id ="description" class="mdl-navigation__link"></p>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col card">
+        <ul class="messages" id ="messages"></ul>
+        <ul id="sticker" class="hidden">
+          <li><img id="happy" src="" alt=""></li>
+          <li><img id="angry" src="" alt=""></li>
+          <li><img id="sad" src="" alt=""></li>
+          <li><img id="surprise" src="" alt=""></li>
+        </ul>
+        <div class="mdl-textfield mdl-js-textfield mdl-cell--10-col fleft">
+          <input type="text" id= "messageInput" class="mdl-textfield__input" />
+          <label class="mdl-textfield__label">press enter to send message...</label>
         </div>
-
-          <div class="row chat">
-            <div class="col-xs-3 profile">
-                <ul>
-                  <li><img class="avaPhoto" id="avatar"  src="" alt=""/></li>
-                  <li><h1 id = "userName"></h1></li>
-                  <li>email:<p id ="email"></p></li>
-                  <li>age:<p id ="age"></p></li>
-                  <li>occupation:<p id ="occupation"></p></li>
-                  <li>description:<p id ="description"></p></li>
-                </ul>
-            </div>
-            <div class="col-xs-9 chatroom">
-              <ul class="messages" id ="messages"></ul>
-              <ul id="sticker" class="hidden">
-                <li><img id="happy" src="" alt=""></li>
-                <li><img id="angry" src="" alt=""></li>
-                <li><img id="sad" src="" alt=""></li>
-                <li><img id="surprise" src="" alt=""></li>
-              </ul>
-              <input type="text" id= "messageInput" placeholder="press enter to send message..." />
-              <button id = "addSticker" class="emojiBtn" type="button" name="button">emoji</button>
-            </div>
-          </div>
+        <div class="mdl-cell--2-col fright btn_group">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id = "addSticker" class="emojiBtn" type="button" name="button">emoji</button>
+        </div>
       </div>
     </div>
+  </main>
+</div>
 </body>
 </html>
