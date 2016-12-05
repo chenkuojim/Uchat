@@ -92,3 +92,6 @@ body{
 #avatar{
   border-radius: 100%;
 }
+#editAvatar{
+  margin-bottom: 10px;
+}
