@@ -89,3 +89,6 @@ body{
 .mdl-layout-title{
   padding-left: 0px !important;
 }
+#avatar{
+  border-radius: 100%;
+}
